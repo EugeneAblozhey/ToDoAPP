@@ -28,6 +28,25 @@ function addNewTask(){
     }
 }
 
+
+
+
+function clearTasks(){
+    let ulList = document.querySelector('#list');
+    while(ulList.children.length != 0){
+        ulList.firstElementChild.remove();
+    }
+    localStorage.setItem('taskList', taskList.innerHTML);
+}
+
+function generateTasks(){
+    taskList.innerHTML = localStorage.getItem('taskList');
+}
+
+function saveTasks(){
+    localStorage.setItem('taskList', taskList.innerHTML);
+}
+
 function counterCompletedTasks(){
     var counterCompleted = 0;
     var counterUncomplited = 0;
@@ -74,14 +93,17 @@ function completedTask(){
     }
 }
 
+document.querySelector('#btn-clear').addEventListener('click', clearTasks);
 
+document.querySelector('#btn-save').addEventListener('click', saveTasks);
 
-btnCloseInfo.onclick = closeModalInfo;
+btnCloseInfo.onclick = closeModalInfo; 
 
 btnInfo.onclick = showModalWindow;
 
 btnAddTask.onclick = addNewTask;
 
+generateTasks();
 deleteTask();
 completedTask();
 counterCompletedTasks();
