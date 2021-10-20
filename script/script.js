@@ -28,7 +28,7 @@ function addNewTask(){
     }
 }
 
-
+//Update
 
 
 function clearTasks(){
@@ -37,10 +37,12 @@ function clearTasks(){
         ulList.firstElementChild.remove();
     }
     localStorage.setItem('taskList', taskList.innerHTML);
+    counterCompletedTasks();
 }
 
 function generateTasks(){
     taskList.innerHTML = localStorage.getItem('taskList');
+    counterCompletedTasks();
 }
 
 function saveTasks(){
